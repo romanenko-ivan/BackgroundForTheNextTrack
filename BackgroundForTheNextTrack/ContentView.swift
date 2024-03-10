@@ -69,14 +69,14 @@ struct ScaleButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .foregroundStyle(.blue)
-            .scaleEffect(performAnimation ? 0.86 : 1)
-            .animation(.easeOut(duration: animationDuration), value: performAnimation)
             .background(
                 Circle()
                     .fill(Color.gray.opacity(performAnimation ? 0.3 : .zero))
-                    .padding(.all, -10)
+                    .padding(.all, -12)
                     .animation(.easeOut(duration: animationDuration), value: performAnimation)
             )
+            .scaleEffect(performAnimation ? 0.86 : 1)
+            .animation(.easeOut(duration: animationDuration), value: performAnimation)
             .onChange(of: configuration.isPressed) { _, newValue in
                 guard newValue else { return }
                 
